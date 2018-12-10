@@ -8,14 +8,9 @@ import itertools
 import pdb
 import sys
 
-<<<<<<< HEAD
 #def select_informative_SNPs(chr_strands: pd.DataFrame, prob_pops: pd.Series, ADMIX2: pd.DataFrame, diff_quantile = 0.1) -> pd.DataFrame:
 def select_informative_SNPs(chr_strands,prob_pops,ADMIX2,diff_quantile = 0.1):	
         ### look at using FST instead of absolute difference in conditional prob
-=======
-def select_informative_SNPs(chr_strands: pd.DataFrame, prob_pops: pd.Series, ADMIX2: pd.DataFrame, diff_quantile = 0.1) -> pd.DataFrame:
-	### look at using FST instead of absolute difference in conditional prob
->>>>>>> 40d2bd19cbf37a9c29c9609cec3aa3a8a7fae787
 	### unevenly distributed across genome
 	### could pick the SNP with highest FST in each window (maybe 8,000 - 10,000 bp)
 	### or divide into windows, find SNPs with FST above certain percentile (90, 95, 99?)
@@ -74,12 +69,7 @@ def all_kmer_haplotypes(k):
 	return list(map(lambda x: ''.join(x), itertools.product('01', repeat=k)))
 
 
-<<<<<<< HEAD
-#def split_string_logic(text: str, k: int) -> list:
-def split_string_logic(text,k):
-=======
 def split_string_logic(text: str, k: int) -> list:
->>>>>>> 40d2bd19cbf37a9c29c9609cec3aa3a8a7fae787
 	### split text string into substrings of length k
 	extended_text = text + text[ : (k - (len(text) % k)) % k] ### repeat characters from the beginning of text until its length is divisible by k
 	return (extended_text[i : i+k] for i in range(0, len(extended_text), k))
@@ -105,15 +95,9 @@ def get_sliding_windows(iterable, n):
 		window.popleft()
 
 # @profile
-<<<<<<< HEAD
-#def create_kmer_haplotypes(chr_strands: pd.DataFrame, kmer: int) -> pd.DataFrame:
-def create_kmer_haplotypes(chr_strands,kmer):
-	print('creating {}-mer haplotypes'.format(kmer))
-=======
 def create_kmer_haplotypes(chr_strands: pd.DataFrame, kmer: int) -> pd.DataFrame:
 	print('creating {}-mer haplotypes'.format(kmer))
 
->>>>>>> 40d2bd19cbf37a9c29c9609cec3aa3a8a7fae787
 	if kmer != 1:
 		remainder = len(chr_strands) % kmer
 		if remainder != 0:
@@ -193,10 +177,7 @@ def viterbi(next_haplotype, prev_prob, emission_matrix, transition_matrix, kmer_
 
 	return next_prob		
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 40d2bd19cbf37a9c29c9609cec3aa3a8a7fae787
 def HMM_prob_one_direction(chr_strand_substrings_array, init_prob, log2_emission_matrices, log2_transition_matrix, kmer_haplotypes, direction):
 	chr_states = chr_strand_substrings_array.copy() ### copied to avoid SettingWithCopyWarning for 'chr_states[0] = np.argmax(next_prob)' line
 	chr_states_prob = chr_strand_substrings_array.copy()
@@ -337,12 +318,6 @@ def evaluate_inferences_full(LA_df, LA_df_top, test_to_true, rounding=5):
 
 
 
-<<<<<<< HEAD
-def write_to_db(evaluation,time,window_size,sliding_window,random_seed,batch_size):
-	client = pymongo.MongoClient()
-	db = client.lai
-	results = db.results
-=======
 def write_to_db(
 		evaluation: dict,
 		time: int,
@@ -354,7 +329,6 @@ def write_to_db(
 	db = client.lai
 	results = db.results
 
->>>>>>> 40d2bd19cbf37a9c29c9609cec3aa3a8a7fae787
 	results.insert_one(
 		{
 			'overall_acc' : evaluation['overall']['acc'],
@@ -366,10 +340,7 @@ def write_to_db(
 			'batch_size' : batch_size
 		})
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 40d2bd19cbf37a9c29c9609cec3aa3a8a7fae787
 def evaluate_inferences(LA_df, test_to_true, miss_percentile=95, rounding=5):
 	### - LA_df: contains inferred and actual ancestries for each chromosome
 	### - test_to_true: map test IDs to true IDs, i.e.

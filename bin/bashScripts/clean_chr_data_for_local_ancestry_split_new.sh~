@@ -39,11 +39,7 @@ for (( i=$start_chr; i<=$stop_chr; i++ )); do
 
 	#### Split phased chromosomes
 	# Output: pops_data/ASW_CEU_YRI_Data/Chr22/tmp/chr22.phase3.ASW_CEU_YRI.SNPs.recode.vcf
-<<<<<<< HEAD
-	python bin/pythonScripts/split_homologous_chr.py $working_chr_recoded_vcf
-=======
 	python3 bin/pythonScripts/split_homologous_chr.py $working_chr_recoded_vcf
->>>>>>> 40d2bd19cbf37a9c29c9609cec3aa3a8a7fae787
 
     # The two files below will be created in chr_folder_loc folder
 	allele_filename=$(echo $working_chr_recoded_vcf | sed 's/recode.vcf/allele.vcf/g')

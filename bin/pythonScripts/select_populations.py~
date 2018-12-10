@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-#!/usr/bin python
-=======
 #!/usr/bin/env python3
->>>>>>> 40d2bd19cbf37a9c29c9609cec3aa3a8a7fae787
 
 from sys import argv
 import os
